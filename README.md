@@ -1,3 +1,202 @@
 # webapp
 
-201~200~Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam urna tempor pulvinar vivamus fringilla lacus nec metus bibendum egestas iaculis massa nisl malesuada lacinia integer nunc posuere ut hendrerit semper vel class aptent taciti sociosqu ad litora torquent per conubia nostra inceptos himenaeos orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus mus donec rhoncus eros lobortis nulla molestie mattis scelerisque maximus eget fermentum odio phasellus non purus est efficitur laoreet mauris pharetra vestibulum fusce dictum risus blandit quis suspendisse aliquet nisi sodales consequat magna ante condimentum neque at luctus nibh finibus facilisis dapibus etiam interdum tortor ligula congue sollicitudin erat viverra ac tincidunt nam porta elementum a enim euismod quam justo lectus commodo augue arcu dignissim velit aliquam imperdiet mollis nullam volutpat porttitor ullamcorper rutrum gravida.
+This project can be deployed using either **Nginx** or **Apache HTTP Server**.
+
+## Clone this repo
+
+```bash
+git clone <repo-url>
+```
+
+## Project Structure
+
+```bash
+README.md
+about.html
+apache.conf
+index.html
+nginx.conf
+style.css
+```
+
+---
+
+# Deploying with Nginx
+
+## 1. Install Nginx
+
+Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install nginx
+```
+
+---
+
+## 2. Copy Configuration
+
+Copy the provided configuration file:
+
+```bash
+sudo cp nginx.conf /etc/nginx/sites-available/webapp
+```
+
+---
+
+## 3. Enable Site
+
+```bash
+sudo ln -s /etc/nginx/sites-available/webapp /etc/nginx/sites-enabled/
+```
+
+---
+
+## 4. Test Configuration
+
+```bash
+sudo nginx -t
+```
+
+---
+
+## 5. Reload Nginx
+
+```bash
+sudo systemctl reload nginx
+```
+
+---
+
+## 6. Access Application
+
+Open in browser:
+
+```bash
+http://localhost
+```
+
+---
+
+# Deploying with Apache
+
+## 1. Install Apache
+
+Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install apache2
+```
+
+---
+
+## 2. Enable Required Modules
+
+```bash
+sudo a2enmod rewrite
+```
+
+---
+
+## 3. Copy Virtual Host Configuration
+
+```bash
+sudo cp apache.conf /etc/apache2/sites-available/webapp.conf
+```
+
+---
+
+## 4. Enable Site
+
+```bash
+sudo a2ensite webapp.conf
+```
+
+---
+
+## 5. Change Apache Port
+
+Since the configuration uses port `8080`, update Apache ports configuration:
+
+Edit:
+
+```bash
+sudo nano /etc/apache2/ports.conf
+```
+
+Add:
+
+```apache
+Listen 8080
+```
+
+---
+
+## 6. Reload Apache
+
+```bash
+sudo systemctl reload apache2
+```
+
+---
+
+## 7. Access Application
+
+Open in browser:
+
+```bash
+http://localhost:8080
+```
+
+---
+
+# Features
+
+* Static file hosting
+* SPA-style routing using:
+
+  * `try_files` in Nginx
+    * `FallbackResource` in Apache
+    * Simple HTML/CSS deployment
+    * Lightweight and production-ready setup
+
+    ---
+
+    # Troubleshooting
+
+    ## Nginx Test Failed
+
+    Run:
+
+    ```bash
+    sudo nginx -t
+    ```
+
+    Check syntax errors in `nginx.conf`.
+
+    ---
+
+    ## Apache Site Not Loading
+
+    Check enabled sites:
+
+    ```bash
+    sudo apachectl -S
+    ```
+
+    Verify Apache is listening on port `8080`:
+
+    ```bash
+    sudo ss -tulpn | grep 8080
+    ```
+
+    ---
+
+    # Stopping Services
+
+    ```bash
+    sudo systemctl stop nginx
+    sudo systemctl stop apache2
+    ```
+    
