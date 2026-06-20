@@ -1,0 +1,10 @@
+# Enable Apache's URL rewriting engine.
+# This allows RewriteRule directives to work.
+RewriteEngine On
+
+# Redirect requests for /home to the site root (/).
+# R=301 means a permanent redirect.
+# L means stop processing any further rewrite rules.
+RewriteRule ^home/?$ / [R=301,L]
+# ^->start_of_URL, $->end_of_url
+# /?->Match zero or one / character

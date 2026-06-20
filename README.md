@@ -159,18 +159,6 @@ http://localhost:8080
 
 ---
 
-# Features
-
-* Static file hosting
-* SPA-style routing using:
-
-  * `try_files` in Nginx
-    * `FallbackResource` in Apache
-    * Simple HTML/CSS deployment
-    * Lightweight and production-ready setup
-
-    ---
-
     # Troubleshooting
 
     ## Nginx Test Failed
