@@ -60,7 +60,15 @@ sudo nginx -t
 
 ---
 
-## 5. Reload Nginx
+## 5. Add to /etc/hosts for local testing
+
+```bash
+echo '127.0.0.1  webapp.local' | sudo tee -a /etc/hosts
+```
+
+---
+
+## 6. Reload Nginx
 
 ```bash
 sudo systemctl reload nginx
@@ -68,7 +76,7 @@ sudo systemctl reload nginx
 
 ---
 
-## 6. Access Application
+## 7. Access Application
 
 Open in browser:
 
