@@ -159,40 +159,40 @@ http://localhost:8080
 
 ---
 
-    # Troubleshooting
+# Troubleshooting
 
-    ## Nginx Test Failed
+### Nginx Test Failed
 
-    Run:
+Run:
 
-    ```bash
-    sudo nginx -t
-    ```
+```bash
+sudo nginx -t
+```
 
-    Check syntax errors in `nginx.conf`.
+Check syntax errors in `nginx.conf`.
 
-    ---
+---
 
-    ## Apache Site Not Loading
+### Apache Site Not Loading
 
-    Check enabled sites:
+check enabled sites:
 
-    ```bash
-    sudo apachectl -S
-    ```
+```bash
+sudo apachectl -S
+```
 
-    Verify Apache is listening on port `8080`:
+Verify Apache is listening on port `8080`:
 
-    ```bash
-    sudo ss -tulpn | grep 8080
-    ```
+```bash
+sudo ss -tulpn | grep 8080
+```
 
-    ---
+---
 
-    # Stopping Services
+## Stopping Services
 
-    ```bash
-    sudo systemctl stop nginx
-    sudo systemctl stop apache2
-    ```
+```bash
+sudo systemctl stop nginx
+sudo systemctl stop apache2
+```
     
